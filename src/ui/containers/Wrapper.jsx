@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // ENGINE
-import { setTodo } from '../../engine/slice';
+import { getTodos } from '../../engine/thunks';
 // PARTS
 import Form from '../components/Form';
 import Item from '../components/Item';
@@ -13,7 +13,7 @@ function Wrapper() {
   const todoItems = useSelector((state) => state.todo.todos);
 
   useEffect(() => {
-    dispatch(setTodo(JSON.parse(localStorage.getItem('todo')) || []))
+    dispatch(getTodos());
   }, [dispatch]);
 
   return (
@@ -26,7 +26,7 @@ function Wrapper() {
         <h2 className='todos-title text_style'>TODOS:</h2>
         {todoItems.map((item) => <Item itemElem={item} key={item.id} />)}
       </div>
-        <Footer />
+      <Footer />
     </div>
   );
 }
