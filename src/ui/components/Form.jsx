@@ -1,26 +1,23 @@
 // CORE
 import React from 'react';
-import { useState} from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { v4 } from 'uuid';
 // ENGINE
-import {setTodo} from "../../engine/slice";
+import { createTodos } from '../../engine/thunks';
 
 function Form() {
-    const [value, setValue] = useState('');
-    const dispatch = useDispatch();
-    const todoItems = useSelector((state) => state.todo.todos);
+  const [value, setValue] = useState('');
+  const dispatch = useDispatch();
 
-    const createItem = () => {
-        const newTodo = [...todoItems, { note: value, id: v4(), }];
-        dispatch(setTodo(newTodo));
-        localStorage.setItem('todo', JSON.stringify(newTodo));
-        setValue('');
-    }
+  const onAddItem = () => {
+    dispatch(createTodos(value, v4()));
+    setValue('');
+  }
 
   return (
-    <form action="#" className='form' onSubmit={createItem}>
-      <input type="text" className="form-input border-left" value={value} onChange={event => setValue(event.target.value)}/>
+    <form className='form' onSubmit={onAddItem}>
+      <input type="text" className="form-input border-left" value={value} onChange={event => setValue(event.target.value)} />
       <button className='border-right'>ADD</button>
     </form>
   )
