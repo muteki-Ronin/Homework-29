@@ -12,6 +12,12 @@ export const createTodos = (note, id) => (dispatch, getState) => {
 }
 
 
+export const handleDelete = (id) => (dispatch, getState) => {
+  const todos = getState().todo.todos;
+  const newTodo = todos.filter(item => item.id !== id);
+  dispatch(setTodo(newTodo));
+  localStorage.setItem('todo', JSON.stringify(newTodo));
+}
 
 export const handleDeleteAll = () => (dispatch) => {
   localStorage.setItem('todo', JSON.stringify([]))
