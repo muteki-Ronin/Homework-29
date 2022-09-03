@@ -30,7 +30,7 @@ function Item({ itemElem }) {
           <input type="text" className='todo-input' value={inputValue} onChange={event => setInputValue(event.target.value)} /> :
           <div className={itemElem.checked ? 'todo-text todo-item__underline' : 'todo-text'}>{itemElem.note}</div>}
       </label>
-      <button className='border-left' onClick={onEdit}>EDIT</button>
+      <button className='border-left' onClick={onEdit}>{itemElem.edit ? 'SAVE' : 'EDIT'}</button>
       <button className='border-right' onClick={onDelete}>DELETE</button>
     </div>
   )
