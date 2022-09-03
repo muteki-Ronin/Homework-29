@@ -10,7 +10,8 @@ function Form() {
   const [inputValue, setInputValue] = useState('');
   const dispatch = useDispatch();
 
-  const onAddItem = () => {
+  const onAddItem = (e) => {
+    e.preventDefault();
     dispatch(createTodo(inputValue, v4()));
     setInputValue('');
   }

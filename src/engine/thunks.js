@@ -6,14 +6,25 @@ export const getTodos = () => (dispatch) => {
 
 export const createTodo = (note, id) => (dispatch, getState) => {
   const todos = getState().todo.todos;
-  const newTodos = [...todos, { note, id, edit: false, }];
+  const newTodos = [...todos, { note, id, edit: false, checked: false }];
   dispatch(setTodo(newTodos));
   localStorage.setItem('todo', JSON.stringify(newTodos));
 }
 
-// export const editCheckedTodo = () => () => {
+export const editCheckedTodo = (id) => (dispatch, getState) => {
+  const todos = getState().todo.todos;
+  const newTodos = todos.map(item => {
+    if (item.id === id) {
+      const check = !item.checked;
+      console.log(check)
+      return { ...item, checked: check }
+    }
+    return item;
+  });
+  dispatch(setTodo(newTodos));
+  localStorage.setItem('todo', JSON.stringify(newTodos));
 
-// }
+}
 
 export const editTodo = (id, newValue) => (dispatch, getState) => {
   const todos = getState().todo.todos;
