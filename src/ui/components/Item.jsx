@@ -25,7 +25,7 @@ function Item({ itemElem }) {
   return (
     <div className='todo'>
       <label className='todo-label'>
-        <input type="checkbox" className='todo-checkbox' defaultValue={itemElem.checked} onChange={onCheckbox} />
+        <input type="checkbox" className='todo-checkbox' defaultChecked={itemElem.checked} onChange={onCheckbox} />
         {itemElem.edit ?
           <input type="text" className='todo-input' value={inputValue} onChange={event => setInputValue(event.target.value)} /> :
           <div className={itemElem.checked ? 'todo-text todo-item__underline' : 'todo-text'}>{itemElem.note}</div>}
