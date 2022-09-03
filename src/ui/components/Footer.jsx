@@ -3,9 +3,10 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // ENGINE
 import { deleteAllTodo } from '../../engine/thunks';
+import Selectors from '../../engine/selectors';
 
 function Footer() {
-    const todoItems = useSelector((state) => state.todo.todos);
+    const todoItems = useSelector(Selectors.todos);
     const dispatch = useDispatch();
 
     const onDeleteAll = () => {

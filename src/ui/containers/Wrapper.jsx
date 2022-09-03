@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // ENGINE
 import { getTodos } from '../../engine/thunks';
+import Selectors from '../../engine/selectors';
 // PARTS
 import Form from '../components/Form';
 import Item from '../components/Item';
@@ -10,7 +11,7 @@ import Footer from '../components/Footer';
 
 function Wrapper() {
   const dispatch = useDispatch();
-  const todoItems = useSelector((state) => state.todo.todos);
+  const todoItems = useSelector(Selectors.todos);
 
   useEffect(() => {
     dispatch(getTodos());
