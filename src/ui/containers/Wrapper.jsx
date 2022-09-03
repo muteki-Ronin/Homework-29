@@ -25,7 +25,9 @@ function Wrapper() {
       </div>
       <div className='todos-container'>
         <h2 className='todos-title text_style'>TODOS:</h2>
-        {todoItems.map((item) => <Item itemElem={item} key={item.id} />)}
+        {todoItems.length === 0 ?
+          <div className='wrapper-hello'>ADD YOUR FIRST TODO!</div> :
+          todoItems.map((item) => <Item itemElem={item} key={item.id} />)}
       </div>
       <Footer />
     </div>
