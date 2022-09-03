@@ -2,14 +2,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // ENGINE
-import { handleDeleteAll } from '../../engine/thunks';
+import { deleteAllTodo } from '../../engine/thunks';
 
 function Footer() {
     const todoItems = useSelector((state) => state.todo.todos);
     const dispatch = useDispatch();
 
     const onDeleteAll = () => {
-        dispatch(handleDeleteAll());
+        dispatch(deleteAllTodo());
     }
 
     return (
