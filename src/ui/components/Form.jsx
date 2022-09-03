@@ -23,6 +23,7 @@ function Form() {
         className="form-input border-left"
         value={inputValue}
         onChange={event => setInputValue(event.target.value)}
+        placeholder="ADD TODO"
       />
       <button className='border-right'>ADD</button>
     </form>
